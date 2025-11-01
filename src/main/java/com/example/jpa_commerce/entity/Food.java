@@ -1,13 +1,14 @@
 package com.example.jpa_commerce.entity;
 
 import jakarta.persistence.*;
+import lombok.Getter;
 import lombok.Setter;
+import java.util.ArrayList;
+import java.util.List;
 
-/**
- * 이럴경우 대부분 User 에 매핑관계의 주인을 준다
- */
-@Setter
 @Entity
+@Getter
+@Setter
 @Table(name = "food")
 public class Food {
     @Id
@@ -16,7 +17,6 @@ public class Food {
     private String name;
     private double price;
 
-    @OneToOne
-    @JoinColumn(name = "user_id")//매핑 관계의 주인 User 수정 가능
-    private User user;
+    @OneToMany(mappedBy = "food")
+    private List<Order> orderList = new ArrayList<>();
 }
