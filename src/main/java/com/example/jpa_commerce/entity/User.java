@@ -7,6 +7,9 @@ import lombok.Setter;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ *
+ */
 @Entity
 @Getter
 @Setter
@@ -18,5 +21,5 @@ public class User {
     private String name;
 
     @OneToMany(mappedBy = "user")
-    private List<Order> orderList = new ArrayList<>();
+    private List<Order> orders = new  ArrayList<>();
 }
